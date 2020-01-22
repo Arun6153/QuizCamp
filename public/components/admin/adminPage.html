@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Quiz Camp Admin</title>
+</head>
+<style>
+    .image {
+        background-image: url('./assests/background.svg');
+        background-repeat: no-repeat;
+        background-size: contain;
+        margin-top: -110vh;
+        background-position: left;
+        height: 550px;
+        z-index: -1;
+    }
+
+    .card {
+        transition: 0.5s;
+        width: 18rem;
+        margin: 20px;
+        box-shadow: 0px 0px 5px 1px #000000;
+    }
+
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0px 0px 15px 2px #000000;
+        transition: 0.5s;
+    }
+</style>
+
+<body onload="updateData()">
+    <nav class="navbar navbar-expand-lg bg-success navbar-dark fixed-top">
+        <a class="navbar-brand" style="font-weight: bold;" href="http://localhost:3000/adminPage.html">Quiz Camp</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#questionsModal">Add Questions</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./components/viewQuestions.html">View Questions</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./components/createTest.html">Create Test</a>
+                </li>
+            </ul>
+        </div>
+        <form class="form-inline my-2 my-lg-0">
+            <button class="btn btn-light my-2 my-sm-0" onclick="logout()">Logout</button>
+        </form>
+    </nav>
+    <div id="Success"></div>
+    <div style="display: flex; flex-direction: row;flex-wrap: wrap; padding:70px 0px 0px 180px;margin-left: 80vh;">
+        <div class="card">
+            <img class="card-img-top" style="height: 100px;width: 100px;margin:auto;position: relative;margin-top:40px;"
+                src="./assests/addQuestion.png" alt="Card image cap">
+            <div style="margin-top:50px" class="text-center card-body">
+                <div style="margin-bottom: 15px; text-align: justify;font-weight: bold;color: grey;">
+                    Add question here by just one click ..
+                </div>
+                <a href="#" data-toggle="modal" data-target="#questionsModal" class="btn btn-success">Add Questions</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img class="card-img-top" style="height: 150px;width: 150px;margin:auto;position: relative;margin-top:20px;"
+                src="./assests/viewQuestions.png" alt="Card image cap">
+            <div style="margin-top:20px" class="text-center card-body">
+                <div style="margin-bottom: 15px; text-align: justify;font-weight: bold;color: grey;">
+                    You can view all added question here.
+                </div>
+                <a href="./components/viewQuestions.html" class="btn btn-success">View Questions</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img class="card-img-top" style="height: 120px;width: 120px;margin:auto;position: relative;margin-top:40px;"
+                src="./assests/addTest.png" alt="Card image cap">
+            <div style="margin-top:30px" class="text-center card-body">
+                <div style="margin-bottom: 15px; text-align: justify;font-weight: bold;color: grey;">
+                    You can create test here. Just click below button and enter the panel to create test.
+                </div>
+                <a href="./components/createTest.html" class="btn btn-success">Create Test</a>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top" style="height: 120px;width: 120px;margin:auto;position: relative;margin-top:40px;"
+                src="./assests/createdTest.jpg" alt="Card image cap">
+            <div style="margin-top:30px" class="text-center card-body">
+                <div style="margin-bottom: 15px; text-align: justify;font-weight: bold;color: grey;">
+                    View all created test and result on there attempt.
+                </div>
+                <a href="#" data-toggle="modal" onclick="addQuestionCreated()" data-target="#cretedModal"
+                    class="btn btn-success">Created Tests</a>
+            </div>
+        </div>
+    </div>
+    <div class="image"></div>
+    <div class="modal fade" id="cretedModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Created Tests</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="addCreatedTest">
+
+                    </div>
+                </div>
+                <button class="btn btn-dark" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="questionsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add Question</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <form class="register-form">
+                        <div class="form-group">
+                            <label>Title:</label>
+                            <input class="form-control" id="questionTitle" placeholder="Enter Question Title">
+                        </div>
+                        <div class="form-group">
+                            <label>Description:</label>
+                            <textarea class="form-control" id="questionDescription"
+                                placeholder="Enter Question Description"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Options:</label>
+                            <input class="form-control" style="margin-top: 5px" id="Option1"
+                                placeholder="Enter Option 1">
+                            <input class="form-control" style="margin-top: 5px" id="Option2"
+                                placeholder="Enter Option 2">
+                            <input class="form-control" style="margin-top: 5px" id="Option3"
+                                placeholder="Enter Option 3">
+                            <input class="form-control" style="margin-top: 5px" id="Option4"
+                                placeholder="Enter Option 4">
+                        </div>
+                        <div class="form-group">
+                            <label>Answer:</label>
+                            <select class="form-control" id="answer">
+                                <option selected >Option 1</option>
+                                <option>Option 2</option>
+                                <option>Option 3</option>
+                                <option>Option 4</option>
+                            </select>
+                        </div>
+                        <button onclick="addQuestion()" type="button" class="btn btn-success">Add Question</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+<script src="./adminPage.js"></script>
+
+</html>
