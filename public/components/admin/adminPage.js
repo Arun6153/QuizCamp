@@ -1,11 +1,12 @@
 var userSession = JSON.parse(sessionStorage.getItem("userSessionKey"));
+const link = window.location.href;
 updateData = function()
 {
     console.log("Data Updated");
     console.log(userSession);
     if(userSession == null)
     {
-        window.location.replace('http://localhost:3000');
+        window.location.goBack();
     }
 }
 function checkFields()
@@ -33,7 +34,7 @@ function addQuestion() {
                 CorrectAnswerNo: $('#answer').prop('selectedIndex'),
                 Options: [$('#Option1').val(), $('#Option2').val(), $('#Option3').val(), $('#Option4').val()]
             }),
-            url: 'http://localhost:3000/addQuestion',
+            url: link+'addQuestion',
             async: true,
             contentType: "application/json; charset=utf-8",
             dataType: "text",
@@ -56,7 +57,7 @@ function addQuestionCreated()
 {
 
     let reqXml = new XMLHttpRequest();
-    reqXml.open('GET', "http://localhost:3000/getCreateTest");
+    reqXml.open('GET', link+"getCreateTest");
     reqXml.send();
     reqXml.onreadystatechange = function () {
         if (reqXml.readyState == 4 && reqXml.status == 200) {

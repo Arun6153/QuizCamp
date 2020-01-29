@@ -2,9 +2,9 @@ var userIDCounter = 0;
 var registeredUserList = [];
 var loginAjax = new XMLHttpRequest();
 var storeAjax = new XMLHttpRequest();
-
+const link = window.location.href;
 function checkUser(userInfo) {
-    loginAjax.open("POST", "http://localhost:3000/getUser");
+    loginAjax.open("POST", link+"getUser");
     loginAjax.setRequestHeader("Content-Type", "application/json");
     loginAjax.send(JSON.stringify(userInfo));
 }
@@ -42,6 +42,7 @@ function checkEmailPresent(mail, pass) {
 }
 
 function loginUser() {
+    console.log("fgd");
     var Email = document.getElementById("loginEmail");
     var Password = document.getElementById("loginPassword");
     if (Email.value == "" || Password.value == "") {
@@ -55,7 +56,7 @@ function loginUser() {
 }
 
 function storeUserInfo(userInfo) {
-    storeAjax.open("POST", "http://localhost:3000/registerUser");
+    storeAjax.open("POST", link+"/registerUser");
     storeAjax.setRequestHeader("Content-Type", "application/json");
     storeAjax.send(JSON.stringify(userInfo));
 }
