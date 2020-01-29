@@ -1,12 +1,12 @@
 let keyCode = document.getElementById('keyCode');
-
 let userSession = JSON.parse(sessionStorage.getItem('NormalSessionKey'));
+const link = "http://"+window.location.host+"/";
 
 $(document).ready(()=>{
     if(userSession==null)
     {
         sessionStorage.clear();
-        window.location.replace('../../index.html');
+        window.location.replace(link);
     }
 });
 
@@ -14,7 +14,7 @@ function checkTest(){
     if(keyCode.value != "")
     {
         let checkTest = new XMLHttpRequest();
-        checkTest.open('POST',"http://localhost:3000/getTest");
+        checkTest.open('POST',link+"getTest");
         checkTest.setRequestHeader("Content-Type","application/json");
         checkTest.send(JSON.stringify({Key:keyCode.value,Email:userSession.Email}));
         
@@ -25,7 +25,7 @@ function checkTest(){
                 if(JSON.parse(checkTest.responseText).bool!=false)
                 {
                     sessionStorage.setItem("Test",checkTest.responseText);
-                    window.location.replace("http://localhost:3000/components/user/components/test.html");
+                    window.location.replace("./components/user/components/test.html");
                     /// 1574514937759
                 }
                 else{
@@ -42,5 +42,5 @@ function checkTest(){
 function logout(){
     console.log("In logout");
     sessionStorage.removeItem('NormalSessionKey');
-    window = window.location.replace('http://localhost:3000');
+    window = window.location.replace(link);
 }

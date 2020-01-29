@@ -1,16 +1,17 @@
+const link ="http://"+ window.location.host +"/";
 function loadResult() {
     $.ajax({
         type: "POST",
         data: JSON.stringify({ 
             TestId: sessionStorage.getItem("testKey")
         }),
-        url: 'http://localhost:3000/getResult',
+        url: link+'getResult',
         async: true,
         contentType: "application/json; charset=utf-8",
         dataType: "text",
         success: function (data) {
             if (data == "[]") {
-                $("#container").append("<div class='text-center' style='font-size: 30px;'>No one gave the test yet.<br></div>");
+                $("#container").append("<div class='text-center' style='font-size: 30px;'>No one has given a test yet.<br></div>");
             }
             else {
                 $("#table-container").attr("style", "");
@@ -44,12 +45,12 @@ function loadResult() {
 function logout() {
 
     localStorage.removeItem('userSessionKey');
-    window.location.replace('http://localhost:3000');
+    window.location.replace(link);
 }
 $(document).ready(function () {
     let userSession = sessionStorage.getItem('userSessionKey');
     if (userSession == null) {
-        window.location.replace('http://localhost:3000');
+        window.location.replace(link);
     }
     loadResult();
 });

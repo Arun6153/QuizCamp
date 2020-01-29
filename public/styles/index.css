@@ -16,7 +16,7 @@
     position: relative;
     margin-top: 80px;
     background: rgb(255, 255, 255);
-    box-shadow: 0px 0px 15px 1px;
+    box-shadow: 0px 0px 10px -2px;
 }
 .login-form{
     line-height:30px;
@@ -28,3 +28,18 @@
     border-bottom:5px solid #28A745;
     font-weight: bold;
 }
+@media only screen and (max-width: 600px) {
+    .image{
+        background-image: none;
+    }
+    body{
+        background-color:  #28A745;
+        height: 50vh;
+    }
+    .div-form{
+        margin:40px 0;
+        width: auto;
+        height: auto;
+        padding:30px 10px 30px 10px ;
+    }
+} 

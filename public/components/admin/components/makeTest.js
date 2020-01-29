@@ -3,13 +3,14 @@ let resQuestion = [];
 let TestTitle = document.getElementById('testTitle');
 let timing = document.getElementById('testTiming');
 var userSession = JSON.parse(sessionStorage.getItem("userSessionKey"));
+const link ="http://"+ window.location.host +"/";
 //////
 $(document).ready(()=>{
     console.log("Data Updated");
     console.log(userSession);
     if(userSession == null)
     {
-        window.location.replace('http://localhost:3000');
+        window.location.replace(link);
     }
     loadQuestions();
 });
@@ -48,7 +49,7 @@ function createTest() {
     }
     console.log(test);
     let createTestXml = new XMLHttpRequest();
-    createTestXml.open('POST', "http://localhost:3000/createTest");
+    createTestXml.open('POST', link+"createTest");
     createTestXml.setRequestHeader('Content-Type', "application/json");
     createTestXml.send(JSON.stringify(test));
     $('#testKey').text("Test Created, TestKey: " + testId);
@@ -62,7 +63,7 @@ function createTest() {
 function loadQuestions() {
     $.ajax({
         type: "GET",
-        url: 'http://localhost:3000/getQuestions',
+        url: link+'getQuestions',
         async: true,
         contentType: "application/json; charset=utf-8",
         dataType: "text",
@@ -99,5 +100,5 @@ function loadQuestions() {
 
 function logout() {
     sessionStorage.removeItem('userSessionKey');
-    window.location.replace('http://localhost:3000');
+    window.location.replace(link);
 }

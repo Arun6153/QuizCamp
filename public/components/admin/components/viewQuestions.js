@@ -1,7 +1,7 @@
-function loadQuestions() {
+const link ="http://"+ window.location.host +"/";function loadQuestions() {
     $.ajax({
         type: "GET",
-        url: 'http://localhost:3000/getQuestions',
+        url: link+'getQuestions',
         async: true,
         contentType: "application/json; charset=utf-8",
         dataType: "text",

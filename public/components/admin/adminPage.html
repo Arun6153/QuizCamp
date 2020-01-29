@@ -7,35 +7,33 @@
     <title>Quiz Camp Admin</title>
 </head>
 <style>
-    .image {
-        background-image: url('./assests/background.svg');
-        background-repeat: no-repeat;
-        background-size: contain;
-        margin-top: -80vh;
-        background-position: left;
-        height: 550px;
-        z-index: -1;
-    }
-
     .card {
         transition: 0.5s;
-        width: 18rem;
-        margin: 20px;
-        box-shadow: 0px 0px 5px 1px #000000;
+        box-shadow: 0px 0px 5px 0px #000000;
+        margin: auto;
     }
-
     .card:hover {
         transform: translateY(-10px);
         box-shadow: 0px 0px 15px 2px #000000;
         transition: 0.5s;
     }
+    .all-cards{
+        margin-top:10vh;
+    }
+    @media only screen and (max-width:600px){
+        .all-cards{
+        position: relative;
+        margin-top:10vh;
+    }
+    }
 </style>
 
 <body onload="updateData()">
     <nav class="navbar navbar-expand-lg bg-success navbar-dark fixed-top">
-        <a class="navbar-brand" style="font-weight: bold;" href="http://localhost:3000/adminPage.html">Quiz Camp</a>
+        <a class="navbar-brand" style="font-weight: bold;" href="http://quizcamp.herokuapp.com/admin/adminPage.html">Quiz Camp</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
@@ -52,25 +50,25 @@
                     <a class="nav-link" href="./components/createTest.html">Create Test</a>
                 </li>
             </ul>
-        </div>
-        <form class="form-inline my-2 my-lg-0">
-            <button class="btn btn-light my-2 my-sm-0" onclick="logout()">Logout</button>
+            <form class="form-inline my-2 my-lg-0">
+            <button class="btn btn-light mr-auto my-2 my-sm-0" onclick="logout()">Logout</button>
         </form>
+        </div>
     </nav>
-    <div id="Success"></div>
-    <div style="display: flex; flex-direction: row;flex-wrap: wrap; padding:70px 0px 0px 180px;margin-left: 80vh;">
-        <div class="card">
+    <div class="container">
+    <div class="row card-deck all-cards" >
+        <div class="card col-sm-4" style="width:20rem">
             <img class="card-img-top" style="height: 100px;width: 100px;margin:auto;position: relative;margin-top:40px;"
                 src="./assests/addQuestion.png" alt="Card image cap">
             <div style="margin-top:50px" class="text-center card-body">
-                <div style="margin-bottom: 15px; text-align: justify;font-weight: bold;color: grey;">
+                <p style="margin-bottom: 15px; text-align: justify;font-weight: bold;color: grey;">
                     Add question here by just one click ..
-                </div>
+                </p>
                 <a href="#" data-toggle="modal" data-target="#questionsModal" class="btn btn-success">Add Questions</a>
             </div>
         </div>
 
-        <div class="card">
+        <div class="card col-sm-4" style="width:20rem">
             <img class="card-img-top" style="height: 150px;width: 150px;margin:auto;position: relative;margin-top:20px;"
                 src="./assests/viewQuestions.png" alt="Card image cap">
             <div style="margin-top:20px" class="text-center card-body">
@@ -81,7 +79,7 @@
             </div>
         </div>
 
-        <div class="card">
+        <div class="card col-sm-4" style="width:20rem">
             <img class="card-img-top" style="height: 120px;width: 120px;margin:auto;position: relative;margin-top:40px;"
                 src="./assests/addTest.png" alt="Card image cap">
             <div style="margin-top:30px" class="text-center card-body">
@@ -91,7 +89,7 @@
                 <a href="./components/createTest.html" class="btn btn-success">Create Test</a>
             </div>
         </div>
-        <div class="card">
+        <div class="card col-sm-4" style="width:20rem">
             <img class="card-img-top" style="height: 120px;width: 120px;margin:auto;position: relative;margin-top:40px;"
                 src="./assests/createdTest.jpg" alt="Card image cap">
             <div style="margin-top:30px" class="text-center card-body">
@@ -103,7 +101,6 @@
             </div>
         </div>
     </div>
-    <div class="image"></div>
     <div class="modal fade" id="cretedModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -123,6 +120,7 @@
             </div>
         </div>
     </div>
+</div>
     <div class="modal fade" id="questionsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">

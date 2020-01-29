@@ -1,12 +1,12 @@
 var userSession = JSON.parse(sessionStorage.getItem("userSessionKey"));
-const link = window.location.href;
+const link ="http://"+ window.location.host +"/";
 updateData = function()
 {
     console.log("Data Updated");
     console.log(userSession);
     if(userSession == null)
     {
-        window.location.goBack();
+        window.location.replace(link);
     }
 }
 function checkFields()

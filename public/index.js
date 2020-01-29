@@ -2,9 +2,9 @@ var userIDCounter = 0;
 var registeredUserList = [];
 var loginAjax = new XMLHttpRequest();
 var storeAjax = new XMLHttpRequest();
-const link = window.location.href;
+
 function checkUser(userInfo) {
-    loginAjax.open("POST", link+"getUser");
+    loginAjax.open("POST", "/getUser");
     loginAjax.setRequestHeader("Content-Type", "application/json");
     loginAjax.send(JSON.stringify(userInfo));
 }
@@ -21,8 +21,10 @@ function hideMessage() {
 function checkEmailPresent(mail, pass) {
     checkUser({ mail, pass });
     loginAjax.onreadystatechange = function () {
+        var idLogin = document.getElementById('login-button');
         if (loginAjax.readyState == 4 && loginAjax.status == 200) {
             var statusRes = loginAjax.responseText;
+            idLogin.innerHTML = "Logging";
             if (statusRes != "false") {
                 if (JSON.parse(statusRes).Email == "sarun6153@gmail.com") {
                     window.location.replace('../components/admin/adminPage.html');
@@ -36,7 +38,11 @@ function checkEmailPresent(mail, pass) {
             else {
                 document.getElementById('message').innerHTML = "Wrong Username or Password";
                 showMessage();
+                idLogin.innerHTML = "Login";
             }
+        }
+        else{
+            idLogin.innerHTML = "Checking...";
         }
     };
 }
@@ -56,7 +62,7 @@ function loginUser() {
 }
 
 function storeUserInfo(userInfo) {
-    storeAjax.open("POST", link+"/registerUser");
+    storeAjax.open("POST","/registerUser");
     storeAjax.setRequestHeader("Content-Type", "application/json");
     storeAjax.send(JSON.stringify(userInfo));
 }
