@@ -187,16 +187,17 @@ $("#branch").change(function(){
     //console.log(el.val());
 })
 
+const link ="http://"+ window.location.host +"/";
 
 function logout() {
 
     localStorage.removeItem('userSessionKey');
-    window.location.replace('http://localhost:3000');
+    window.location.replace(link);
 }
 $(document).ready(function () {
     let userSession = sessionStorage.getItem('userSessionKey');
     if (userSession == null) {
-        window.location.replace('http://localhost:3000');
+        window.location.replace(link);
     }
     loadQuestions();
 });
