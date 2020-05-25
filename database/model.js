@@ -3,6 +3,8 @@ const Schema = mongoose.Schema;
 
 const question = new Schema({
     Title: String,
+    Branch: String,
+    Subject: String,
     Description: String,
     Options: [],
     CorrectAnswerNo: Number
@@ -17,6 +19,8 @@ const user = new Schema({
 
 const test = new Schema({
     Title: String,
+    Branch: String,
+    Subject: String,
     Id: String,
     Questions: [],
     Timing: Number
@@ -25,6 +29,8 @@ const test = new Schema({
 const result = new Schema({
     createdAt: { type: Date, default: Date.now },
     TestTitle: String,
+    Branch: String,
+    Subject: String,
     Percentage: String,
     StudentName: String,
     StudentEmail: String,
