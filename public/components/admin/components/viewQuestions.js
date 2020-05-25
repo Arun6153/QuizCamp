@@ -186,9 +186,6 @@ $("#branch").change(function(){
     }
     //console.log(el.val());
 })
-
-const link ="http://"+ window.location.host +"/";
-
 function logout(){
     //console.log("In logout");
     sessionStorage.removeItem('userSessionKey');
