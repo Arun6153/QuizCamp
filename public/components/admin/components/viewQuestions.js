@@ -189,10 +189,10 @@ $("#branch").change(function(){
 
 const link ="http://"+ window.location.host +"/";
 
-function logout() {
-
-    localStorage.removeItem('userSessionKey');
-    window.location.replace(link);
+function logout(){
+    //console.log("In logout");
+    sessionStorage.removeItem('userSessionKey');
+    window = window.location.replace(link);
 }
 $(document).ready(function () {
     let userSession = sessionStorage.getItem('userSessionKey');
