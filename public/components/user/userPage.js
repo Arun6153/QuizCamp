@@ -25,7 +25,7 @@ function checkTest(){
                 if(JSON.parse(checkTest.responseText).bool!=false)
                 {
                     sessionStorage.setItem("Test",checkTest.responseText);
-                    window.location.replace("./components/user/components/test.html");
+                    window.location.replace("./components/test.html");
                     /// 1574514937759
                 }
                 else{
