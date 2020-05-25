@@ -16,7 +16,7 @@ function loadResult() {
             else {
                 $("#table-container").attr("style", "");
                 var res = JSON.parse(data);
-                console.log(res);
+                //console.log(res);
                 var el = $("<thead class='thead-dark'>");
                 el.append("<tr>");
                 el.append("<th>S. No.</th>");

@@ -16,6 +16,7 @@ body{
     background-repeat: no-repeat;
     padding-top:10vh ;
 }
+
 </style>
 <body>
         <nav class="navbar navbar-expand-lg bg-success navbar-dark fixed-top">
@@ -36,16 +37,16 @@ body{
                     <a class="nav-link" href="./createTest.html">Create Test</a>
                 </li>
             </ul>
+        </div>
             <form class="form-inline my-2 my-lg-0">
                     <button class="btn btn-light my-2 my-sm-0" onclick="logout()">Logout</button>
             </form>
-        </div>
     </nav>
     
-    <div class="container" id="container" style="margin-top: 9vh;">
+    <div class="container" id="container">
         <div id="table-container" style="display: none;">
-            <div class="row" style="top: 200px;position: relative;">
-                <div class="col" style="min-width:250px; overflow: scroll;min-height: 300px;">
+            <div class="row" >
+                <div class="col" style="min-width:250px;min-height: 300px;">
                     <br>
                     <h3>Questions:</h3>
                     <div class="table-responsive" style="min-width:500px; ">
@@ -57,6 +58,79 @@ body{
         </div>
     </div>
     <div class="image"></div>
+
+    <div class="modal fade" id="questionsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Question</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <form class="register-form">
+                        <div class="form-group">
+                            <label>Title:</label>
+                            <input class="form-control" id="questionTitle" placeholder="Enter Question Title">
+                        </div>
+                        <div class="form-group">
+                            <label>Description:</label>
+                            <textarea class="form-control" id="questionDescription"
+                                placeholder="Enter Question Description"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Options:</label>
+                            <input class="form-control" style="margin-top: 5px" id="Option1"
+                                placeholder="Enter Option 1">
+                            <input class="form-control" style="margin-top: 5px" id="Option2"
+                                placeholder="Enter Option 2">
+                            <input class="form-control" style="margin-top: 5px" id="Option3"
+                                placeholder="Enter Option 3">
+                            <input class="form-control" style="margin-top: 5px" id="Option4"
+                                placeholder="Enter Option 4">
+                        </div>
+                        <div class="form-group">
+                            <label>Branch:</label>
+                            <select class="form-control" id="branch">
+                                <option id="b-option1">Computer Science Engineering</option>
+                                <option id="b-option2">Civil Engineering</option>
+                                <option id="b-option3">Mechanical Engineering</option>
+                                <option id="b-option4">Other</option>
+                            </select>
+                            <input type="hidden" id="b-other" class="form-control" style="margin-top: 5px"
+                                placeholder="Branch">
+                        </div>
+                        <div class="form-group">
+                            <label>Subject:</label>
+                            <select class="form-control" id="subject">
+                                <option id="c-option1">Java</option>
+                                <option id="c-option2">DBMS</option>
+                                <option id="c-option3">Operating System</option>
+                                <option id="c-option4">Other</option>
+                            </select>
+                            <input type="hidden" id="s-other" class="form-control" style="margin-top: 5px"
+                                placeholder="Subject">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Answer:</label>
+                            <select class="form-control" id="answer">
+                                <option selected>Option 1</option>
+                                <option>Option 2</option>
+                                <option>Option 3</option>
+                                <option>Option 4</option>
+                            </select>
+                        </div>
+                        
+                        <button onclick="submitEdit()" type="button" class="btn btn-success">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
    
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
