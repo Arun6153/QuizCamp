@@ -2,8 +2,8 @@ var userSession = JSON.parse(sessionStorage.getItem("userSessionKey"));
 const link ="http://"+ window.location.host +"/";
 updateData = function()
 {
-    console.log("Data Updated");
-    console.log(userSession);
+    //console.log("Data Updated");
+    //console.log(userSession);
     if(userSession == null)
     {
         window.location.replace(link);
@@ -137,7 +137,7 @@ $("#branch").change(function(){
     if(el.val()==="Other"){
         document.getElementById("b-other").type = "text";
     }
-    console.log(el.val());
+    //console.log(el.val());
 })
 
 $("#subject").change(function(){
@@ -151,7 +151,7 @@ $("#subject").change(function(){
 
 
 function logout(){
-    console.log("In logout");
+    //console.log("In logout");
     sessionStorage.removeItem('userSessionKey');
     window = window.location.replace('http://localhost:3000');
 }
