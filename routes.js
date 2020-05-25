@@ -44,6 +44,8 @@ router.post("/registerUser", (req, res) => {
 router.post("/addQuestion", (req, res) => {
     question.create({
         Title: req.body.Title,
+        Branch: req.body.Branch,
+        Subject: req.body.Subject,
         Description: req.body.Description,
         CorrectAnswerNo: req.body.CorrectAnswerNo,
         Options: req.body.Options
@@ -52,7 +54,7 @@ router.post("/addQuestion", (req, res) => {
         res.end();
     })
     .catch((err) => {
-        console.log("Error While adding User: ", err);
+        console.log("Error While adding Question: ", err);
         res.end();
     })
 });
@@ -72,6 +74,8 @@ router.get("/getQuestions", (req, res) => {
 router.post("/createTest", (req, res) => {
     test.create({
         Questions:req.body.TestQuestion,
+        Branch: req.body.Branch,
+        Subject : req.body.Subject,
         Id:req.body.TestId,
         Timing:req.body.Timing,
         Title:req.body.TestTitle,
@@ -128,11 +132,32 @@ router.post("/getTest", (req, res) => {
     })
 })
 
+/********* Edit Question Details *******/
+
+router.post('/editQuestionDetails',(req,res)=>[
+    question.updateOne({"_id":req.body.id},{$set:{
+        Title: req.body.Title,
+        Branch: req.body.Branch,
+        Subject: req.body.Subject,
+        Description: req.body.Description,
+        CorrectAnswerNo: req.body.CorrectAnswerNo,
+        Options: req.body.Options
+    }})
+    .then((data) => {
+        res.end();
+    })
+    .catch((err) => {
+        console.log("Error While adding Question: ", err);
+        res.end();
+    })
+])
 /////// Result //////
 
 router.post('/postResult',(req,res)=>{
     result.create({
         TestTitle:req.body.TestTitle,
+        Branch: req.body.Branch,
+        Subject: req.body.Subject,
         Percentage:req.body.Percentage,
         StudentName:req.body.StudentName,
         StudentEmail:req.body.StudentEmail,
@@ -143,9 +168,21 @@ router.post('/postResult',(req,res)=>{
         res.end();
     })
 })
+
 router.post('/getResult',(req,res)=>{
     console.log(req.body);
     result.find({TestId: req.body.TestId})
+    .then((data)=>{
+        res.send(data);
+    }).catch((err)=>{
+        console.log(err);
+        res.end();
+    })
+}
+)
+router.post('/getUserResult',(req,res)=>{
+    console.log(req.body);
+    result.find({StudentEmail: req.body.email})
     .then((data)=>{
         res.send(data);
     }).catch((err)=>{

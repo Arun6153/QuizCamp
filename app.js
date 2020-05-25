@@ -6,7 +6,12 @@ const mongoose = require('mongoose');
 const app = express();
 const port = process.env.PORT || 3000;
 
-mongoose.connect("mongodb+srv://ArunSaini:arun6153@cluster0-vensc.mongodb.net/quizBuilder", { useNewUrlParser: true ,useUnifiedTopology: true})
+//"mongodb+srv://ArunSaini:arun6153@cluster0-vensc.mongodb.net/quizBuilder"
+//mongodb://localhost:27017/QuizCamp
+mongoose.connect('mongodb+srv://ArunSaini:arun6153@cluster0-vensc.mongodb.net/quizBuilder', { 
+    useNewUrlParser: true ,
+    useUnifiedTopology: true
+})
 .then(() => {
     console.log("Database Connected!");
 })
