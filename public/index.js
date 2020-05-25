@@ -26,7 +26,7 @@ function checkEmailPresent(mail, pass) {
             var statusRes = loginAjax.responseText;
             idLogin.innerHTML = "Logging";
             if (statusRes != "false") {
-                if (JSON.parse(statusRes).Email == "sarun6153@gmail.com") {
+                if (JSON.parse(statusRes).Email == "ak@ak.com" || JSON.parse(statusRes).Email == "arun6153@gmail.com") {
                     window.location.replace('../components/admin/adminPage.html');
                     sessionStorage.setItem("userSessionKey", statusRes);
                 }
@@ -48,7 +48,7 @@ function checkEmailPresent(mail, pass) {
 }
 
 function loginUser() {
-    console.log("fgd");
+    //console.log("fgd");
     var Email = document.getElementById("loginEmail");
     var Password = document.getElementById("loginPassword");
     if (Email.value == "" || Password.value == "") {
