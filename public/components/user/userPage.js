@@ -21,7 +21,7 @@ function checkTest(){
         checkTest.onreadystatechange = function(){
             if(checkTest.readyState == 4 && checkTest.status ==200)
             {
-                console.log(JSON.parse(checkTest.responseText).length);
+                //console.log(JSON.parse(checkTest.responseText).length);
                 if(JSON.parse(checkTest.responseText).bool!=false)
                 {
                     sessionStorage.setItem("Test",checkTest.responseText);
@@ -40,7 +40,7 @@ function checkTest(){
     }
 }
 function logout(){
-    console.log("In logout");
+    //console.log("In logout");
     sessionStorage.removeItem('NormalSessionKey');
     window = window.location.replace(link);
 }
