@@ -25,9 +25,11 @@ function updateVariables() {
     test = JSON.parse(sessionStorage.getItem("Test"));
 }
 
+const link ="http://"+ window.location.host +"/";
+
 function postResult(Percentage) {
     let User = JSON.parse(user);
-    fetch('http://localhost:3000/postResult', {
+    fetch(link + 'postResult', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
