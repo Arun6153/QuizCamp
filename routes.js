@@ -26,10 +26,12 @@ router.post("/getUser", (req, res) => {
 });
 
 router.post("/registerUser", (req, res) => {
+    console.log(req.body.Branch);
     user.create({
         Name: req.body.Name,
         Password: req.body.Password,
         Email: req.body.Email,
+        Branch: req.body.Branch,
         Type: req.body.Type
     })
         .then((data) => {
