@@ -24,8 +24,14 @@ function checkTest(){
                 //console.log(JSON.parse(checkTest.responseText).length);
                 if(JSON.parse(checkTest.responseText).bool!=false)
                 {
+                    if(JSON.parse(checkTest.responseText).Branch==userSession.Branch){
                     sessionStorage.setItem("Test",checkTest.responseText);
                     window.location.replace("./components/test.html");
+                    console.log(JSON.parse(checkTest.responseText))
+                    }
+                    else{
+                        alert("You cannot attempt exam of different branch");
+                    }
                     /// 1574514937759
                 }
                 else{
