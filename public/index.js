@@ -26,7 +26,7 @@ function checkEmailPresent(mail, pass) {
             var statusRes = loginAjax.responseText;
             idLogin.innerHTML = "Logging";
             if (statusRes != "false") {
-                if (JSON.parse(statusRes).Email == "ak@ak.com" || JSON.parse(statusRes).Email == "sarun6153@gmail.com") {
+                if (JSON.parse(statusRes).Type == "Admin") {
                     window.location.replace('../components/admin/adminPage.html');
                     sessionStorage.setItem("userSessionKey", statusRes);
                 }
