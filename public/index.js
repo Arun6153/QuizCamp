@@ -71,6 +71,7 @@ function addNewUser() {
     var k = $('#exampleModal');
     var Email = document.getElementById("registerEmail").value;
     var Name = document.getElementById("registerUserName").value;
+    var Branch = document.getElementById("branch").value;
     var Password = document.getElementById("Password1").value;
     var CPassword = document.getElementById("Password2").value;
     var emailPattern = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
@@ -87,6 +88,7 @@ function addNewUser() {
         var userInfo = {
             Email,
             Name,
+            Branch,
             Password,
             Type: "User"
         };
