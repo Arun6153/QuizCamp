@@ -45,7 +45,7 @@ function loadResult() {
 
 function logout() {
 
-    localStorage.removeItem('userSessionKey');
+    localStorage.removeItem('NormalSessionKey');
     window.location.replace(link);
 }
 $(document).ready(function () {
