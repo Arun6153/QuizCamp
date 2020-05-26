@@ -103,7 +103,7 @@ function checkOptionChecked() {
             document.getElementById('percent').innerHTML ="Percentage :"+((score/test.Questions.length)*100).toFixed(2)+"%";
             document.getElementById('correct').innerHTML ="Correct Answers :"+score+"/"+test.Questions.length;
             $("#myModal").modal()
-            postResult((score/test.Questions.length)*100.toFixed(2)+"%");
+            postResult(((score/test.Questions.length)*100).toFixed(2)+"%");
         }
     }
 }
