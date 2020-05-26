@@ -16,7 +16,7 @@ $(document).ready(() => {
     title.innerHTML = test.Title;
     time += test.Time;
     addQuestion(test);
-    console.log(test);
+    //console.log(test);
     callTime(test.Timing);
 });
 function updateVariables() {
@@ -97,7 +97,7 @@ function checkOptionChecked() {
                    break;
                 }
         } 
-        console.log(j+" check");
+        //console.log(j+" check");
         if(j==test.Questions.length-1)
         {
             document.getElementById('percent').innerHTML ="Percentage :"+((score/test.Questions.length)*100).toFixed(2)+"%";
