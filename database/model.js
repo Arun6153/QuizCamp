@@ -14,6 +14,7 @@ const user = new Schema({
     Name: String,
     Password: String,
     Email: String,
+    Branch: String,
     Type: String
 });
 
