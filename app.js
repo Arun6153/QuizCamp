@@ -8,7 +8,7 @@ const port = process.env.PORT || 3000;
 
 //"mongodb+srv://ArunSaini:arun6153@cluster0-vensc.mongodb.net/quizBuilder"
 //mongodb://localhost:27017/QuizCamp
-mongoose.connect('mongodb+srv://ArunSaini:arun6153@cluster0-vensc.mongodb.net/quizBuilder', { 
+mongoose.connect('mongodb+srv://ArunSaini:arun6153@cluster0.qkhpcfv.mongodb.net/?retryWrites=true&w=majority', { 
     useNewUrlParser: true ,
     useUnifiedTopology: true
 })
